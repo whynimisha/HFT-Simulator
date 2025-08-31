@@ -6,6 +6,8 @@ next-bar high/low fills with volume caps, and fee modeling.
 
 > This is an **educational** approximation — not production HFT.
 
+(Currently trying to figure out why my trades are zero)
+
 ## Quick Start
 ```bash
 # 1) Create/activate a virtual environment (recommended)
@@ -54,6 +56,13 @@ hft_mm_sim/
 - **Fills**: next-bar high/low; partial fills constrained by a volume cap fraction.
 - **PnL**: realized + mark-to-market; explicit fees.
 - **Risk**: inventory caps, drawdown stop, volatility brakes.
+
+A Python-based simulator for high-frequency market making, with:
+- Limit Order Book simulation (LOB)
+- Maker vs Taker PnL attribution
+- Walk-forward testing
+- Stress testing
+- Interactive Streamlit dashboard
 
 ## Disclaimers
 This is **not** investment advice. Use for learning only.
