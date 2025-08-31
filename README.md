@@ -6,7 +6,7 @@ next-bar high/low fills with volume caps, and fee modeling.
 
 > This is an **educational** approximation — not production HFT.
 
-(Currently trying to figure out why my trades are zero)
+(Currently trying to figure out why my trades are zero but hey we face problems!)
 
 ## Quick Start
 ```bash
