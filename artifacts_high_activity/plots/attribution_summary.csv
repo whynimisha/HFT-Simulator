@@ -1,0 +1,2 @@
+trades,fees_sum,spread_edge_sum,markout_1_sum,markout_5_sum,markout_10_sum,maker_trades,maker_fees_sum,maker_spread_edge_sum,maker_markout_1_sum,maker_markout_5_sum,maker_markout_10_sum,taker_trades,taker_fees_sum,taker_spread_edge_sum,taker_markout_1_sum,taker_markout_5_sum,taker_markout_10_sum
+1,13.7918166,0.0,4.0,49.42499999998836,116.44000000000233,1,13.7918166,0.0,4.0,49.42499999998836,116.44000000000233,0,0.0,0.0,0.0,0.0,0.0

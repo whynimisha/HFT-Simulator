@@ -1,0 +1,44 @@
+import argparse, pandas as pd, os
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--infile', required=True)
+    ap.add_argument('--outfile', required=True)
+    args = ap.parse_args()
+
+    df = pd.read_csv(args.infile, low_memory=False)
+    # normalize header case
+    df.columns = [str(c).strip().lower() for c in df.columns]
+
+    # ensure 'time' exists and is first column
+    if 'time' not in df.columns:
+        df.rename(columns={df.columns[0]: 'time'}, inplace=True)
+    # consolidate duplicate 'close' columns
+    close_like = [c for c in df.columns if c == 'close' or c.startswith('close')]
+    if len(close_like) > 1:
+        df['close'] = df[close_like].bfill(axis=1).iloc[:, 0]
+        for c in close_like:
+            if c != 'close':
+                del df[c]
+
+    # Keep only required columns if present
+    required = ['time','open','high','low','close','volume']
+    missing = [c for c in required if c not in df.columns]
+    if missing:
+        print(f"WARNING: {args.infile} missing columns {missing}; writing what we have.")
+
+    # Reorder if possible
+    cols = [c for c in required if c in df.columns]
+    df = df[cols]
+
+    # Parse time
+    df['time'] = pd.to_datetime(df['time'], errors='coerce', utc=False)
+    df = df.dropna(subset=['time'])
+    df.sort_values('time', inplace=True)
+
+    os.makedirs(os.path.dirname(args.outfile) or '.', exist_ok=True)
+    df.to_csv(args.outfile, index=False)
+    print(f"Wrote cleaned CSV to {args.outfile}")
+
+if __name__ == '__main__':
+    main()

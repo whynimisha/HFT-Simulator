@@ -1,0 +1,2 @@
+time,side,price,qty,fee,liquidity,mid_t,spread_edge,markout_1,markout_5,markout_10
+2025-08-23 14:15:00,buy,114892.035,0.0,13.7918166,maker,114892.035,0.0,4.0,49.42499999998836,116.44000000000233
